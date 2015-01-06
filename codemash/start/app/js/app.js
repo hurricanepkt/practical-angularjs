@@ -5,7 +5,8 @@ app.config (function ($stateProvider, $urlRouterProvider, $locationProvider) {
 	
 	$stateProvider.state('cards', {
 	        url : '/cards',
-		templateUrl: "cards.html"
+		templateUrl: "cards.html",
+		controller : 'CardsController'
 	});
 	$stateProvider.state('decks', {
 	        url : '/decks',
@@ -17,4 +18,13 @@ app.config (function ($stateProvider, $urlRouterProvider, $locationProvider) {
 	});
 	
 	$urlRouterProvider.otherwise('/cards');
+});
+
+
+app.controller('CardsController', function($scope, $http) {
+
+	$http.get('/api/cards').success(function (response) { 
+		$scope.cards = response.cards;
+	});
+	console.log('created');
 });
