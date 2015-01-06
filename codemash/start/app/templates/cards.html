@@ -2,8 +2,8 @@
   <div class="large-12 column">
     <div id="card-filter">
       <ul>
-        <li >
-          <a href=""></a>
+        <li ng-repeat="hero in heroFilters" class="{{hero.value}}">
+          <a href="" ></a>
         </li>
       </ul>
     </div>
@@ -15,7 +15,7 @@
     </div>
     <div id="card-book">
       <div class="card card-animation" ng-repeat="card in cards">
-        <img alt="{{ card.name }}" src="{{ card.image_url }}" >
+        <img alt="{{ card.name }}" ng-src="{{ card.image_url }}" >
       </div>
     </div>
     <div class="page-num">

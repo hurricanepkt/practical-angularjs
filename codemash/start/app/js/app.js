@@ -1,6 +1,9 @@
-var app = angular.module("app", ["ui.router"]);
+//SETTER
+angular.module("app", ["ui.router"]);
 
-app.config (function ($stateProvider, $urlRouterProvider, $locationProvider) {
+
+//GETTER
+angular.module("app").config (function ($stateProvider, $urlRouterProvider, $locationProvider) {
 	$locationProvider.html5Mode(true);
 	
 	$stateProvider.state('cards', {
@@ -21,10 +24,11 @@ app.config (function ($stateProvider, $urlRouterProvider, $locationProvider) {
 });
 
 
-app.controller('CardsController', function($scope, $http) {
+angular.module("app").controller('CardsController', function($scope, $http, CardFilter) {
 
 	$http.get('/api/cards').success(function (response) { 
 		$scope.cards = response.cards;
 	});
+	$scope.heroFilters = CardFilter.heroFilters;
 	console.log('created');
 });

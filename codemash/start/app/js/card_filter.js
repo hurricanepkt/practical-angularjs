@@ -1,3 +1,4 @@
+//EXTRACTED FOR CLARITY
 angular.module("app").factory("CardFilter", function() {
 
   var PAGE_SIZE = 8;
