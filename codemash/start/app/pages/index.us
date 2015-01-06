@@ -27,7 +27,7 @@
             </section>
           </nav>
         </div>
-        <div id="view"></div>
+        <div id="view" ui-view></div>
       </div>
     </div>
 
