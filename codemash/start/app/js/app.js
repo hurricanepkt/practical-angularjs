@@ -7,9 +7,14 @@ angular.module("app").config (function ($stateProvider, $urlRouterProvider, $loc
 	$locationProvider.html5Mode(true);
 	
 	$stateProvider.state('cards', {
-	        url : '/cards',
+	    url : '/cards',
 		templateUrl: "cards.html",
-		controller : 'CardsController'
+		controller : 'CardsController',
+		resolve : { 
+		    cardsResponse : function($http) {
+				return $http.get('/api/cards');
+			}
+		}		
 	});
 	$stateProvider.state('decks', {
 	        url : '/decks',
@@ -24,12 +29,10 @@ angular.module("app").config (function ($stateProvider, $urlRouterProvider, $loc
 });
 
 
-angular.module("app").controller('CardsController', function($scope, $http, CardFilter) {
-
-	$http.get('/api/cards').success(function (response) { 
-		$scope.cards = response.cards;
-	});
+angular.module("app").controller('CardsController', function($scope, CardFilter, cardsResponse) {
+	$scope.cards = cardsResponse.data.cards;
 	$scope.currentHeroFilter = 'neutral';
+
 	$scope.heroFilters = CardFilter.heroFilters;
 	$scope.setHeroFilter = function (hero) {
 		$scope.currentHeroFilter = hero.value;
