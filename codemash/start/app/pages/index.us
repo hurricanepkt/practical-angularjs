@@ -9,6 +9,7 @@
   <body>
 
     <div class="row">
+     <ng-include src="'nav.html'"></ng-include>
       <div class="large-12">
         <div class="fixed">
           <nav class="top-bar" data-topbar role="navigation">
