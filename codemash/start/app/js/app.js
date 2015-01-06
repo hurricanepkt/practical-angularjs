@@ -7,7 +7,14 @@ app.config (function ($stateProvider, $urlRouterProvider, $locationProvider) {
 	        url : '/cards',
 		templateUrl: "cards.html"
 	});
-	
+	$stateProvider.state('decks', {
+	        url : '/decks',
+		templateUrl: "decks.html"
+	});
+	$stateProvider.state('admin', {
+	        url : '/admin',
+		templateUrl: "admin.html"
+	});
 	
 	$urlRouterProvider.otherwise('/cards');
 });
