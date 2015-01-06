@@ -9,8 +9,8 @@
   <body>
 
     <div class="row">
-     <ng-include src="'nav.html'"></ng-include>
-      <div class="large-12">
+     <ng-include src="'nav.html'" blurs-if-state-is-detailed></ng-include>
+      <div class="large-12" blurs-if-state-is-detailed>
         <div class="fixed">
           <nav class="top-bar" data-topbar role="navigation">
             <ul class="title-area">
@@ -28,8 +28,9 @@
             </section>
           </nav>
         </div>
-        <div id="view" ui-view></div>
+       <div id="view" ui-view></div>
       </div>
+	   
     </div>
 
   </body>

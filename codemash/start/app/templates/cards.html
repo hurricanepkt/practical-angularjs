@@ -11,27 +11,30 @@
     </div>
   </div>
   <div class="large-12 column" style="z-index: 1;">
-    <div class="prev-page"></div>
-    <div class="hero-filter">
-      <span></span>
+    <div class="prev-page" ng-click="previousPage()" ng-show="canGoPrevious()"></div>
+    <div class="hero-filter {{ currentHeroFilter }}">
+      <span>{{currentHeroFilter | capitalize}}</span>
     </div>
     <div id="card-book">
-      <div class="card card-animation" ng-repeat="card in cards">
-        <img alt="{{ card.name }}" ng-src="{{ card.image_url }}" >
+      <div class="card card-animation" ng-repeat="card in cards | filter:searchQuery">
+        <img alt="{{ card.name }}" ng-src="{{ card.image_url }}" ng-click="detailViewFor(card)">
       </div>
     </div>
     <div class="page-num">
-      <span>Page X</span>
+      <span>Page {{ currentPage  + 1 }} of {{  totalPages }} </span>
     </div>
-    <div class="next-page"></div>
+    <div class="next-page" ng-click="nextPage()" ng-show="canGoNext()"></div>
   </div>
   <div class="large-12 column">
-    <div id="card-book-mana-filter">
+    <div id="card-book-mana-filter" blurs-if-state-is-detailed>
       <ul>
-        <li>
-          <a href=""></a>
+        <li ng-repeat="mana in manaFilters" class="{{mana.label}}"
+		ng-class="{current: currentManaFilter === mana.value}"
+		>
+          <a href="" ng-click="setManaFilter(mana.value)">{{mana.label}}</a>
         </li>
       </ul>
     </div>
   </div>
+  <div ui-view></div>
 </div>
