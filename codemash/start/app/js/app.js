@@ -29,6 +29,9 @@ angular.module("app").controller('CardsController', function($scope, $http, Card
 	$http.get('/api/cards').success(function (response) { 
 		$scope.cards = response.cards;
 	});
+	$scope.currentHeroFilter = 'neutral';
 	$scope.heroFilters = CardFilter.heroFilters;
-	console.log('created');
+	$scope.setHeroFilter = function (hero) {
+		$scope.currentHeroFilter = hero.value;
+	}
 });

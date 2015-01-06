@@ -2,8 +2,10 @@
   <div class="large-12 column">
     <div id="card-filter">
       <ul>
-        <li ng-repeat="hero in heroFilters" class="{{hero.value}}">
-          <a href="" ></a>
+        <li ng-repeat="hero in heroFilters" 
+		class="{{hero.value}}"
+		ng-class="{current:currentHeroFilter === hero.value}">
+          <a href="" ng-click="setHeroFilter(hero)" ></a>
         </li>
       </ul>
     </div>
