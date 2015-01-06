@@ -1,9 +1,13 @@
-var app = angular.module("app", ["ngRoute"]);
+var app = angular.module("app", ["ui.router"]);
 
-app.config (function ($routeProvider, $locationProvider) {
+app.config (function ($stateProvider, $locationProvider) {
 	$locationProvider.html5Mode(true);
 	
-	$routeProvider.when('/cards', {
+	$stateProvider.state('cards', {
+	        url : '/cards',
 		templateUrl: "cards.html"
 	});
+	
+	
+	$urlRouterProvider.otherwise('/cards');
 });
