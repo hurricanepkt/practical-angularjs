@@ -28,10 +28,9 @@
             </section>
           </nav>
         </div>
-       <div id="view" ui-view></div>
+      
       </div>
-	   
+	    <div id="view" ui-view></div>
     </div>
-
   </body>
 </html>
